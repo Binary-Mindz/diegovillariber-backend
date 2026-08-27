@@ -32,25 +32,25 @@ async function seedAdmin() {
     },
     {
       email: 'hello@motorspot.app',
-      password: 'Awakegroup001',
+      password: 'Awakegroup2026!!!!!!',
+    },
+    {
+      email: 'loginmotorspot@gmail.com',
+      password: 'Awakegroup2026!!!!!!',
+    },
+    {
+      email: 'diego.villar.ibero@gmail.com',
+      password: 'Awakegroup2026!!!!!!',
     },
   ];
 
   for (const admin of admins) {
-    const existingAdmin = await prisma.user.findUnique({
-      where: { email: admin.email },
-      select: { password: true },
-    });
-
-    let hash = existingAdmin?.password;
-
-    if (!hash) {
-      hash = await bcrypt.hash(admin.password, 10);
-    }
+    const hash = await bcrypt.hash(admin.password, 10);
 
     await prisma.user.upsert({
       where: { email: admin.email },
       update: {
+        password: hash,
         role: Role.ADMIN,
         activeRole: Role.ADMIN,
         accountStatus: AccountStatus.ACTIVE,
