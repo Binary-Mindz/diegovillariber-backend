@@ -35,7 +35,6 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 .env.docker
-.env
 
 
 # temp directory
@@ -59,3 +58,7 @@ firebase-service-account.json
 secrets/
 firebase-service-account.json
 .gitignore
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat
