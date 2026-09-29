@@ -28,6 +28,7 @@ lerna-debug.log*
 .settings/
 *.sublime-workspace
 
+temp_auto_push.bat
 # IDE - VSCode
 
 # dotenv environment variable files
@@ -58,3 +59,5 @@ firebase-service-account.json
 secrets/
 firebase-service-account.json
 .gitignore
+branch_structure.json
+config.bat
